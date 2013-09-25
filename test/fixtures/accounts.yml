@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  username: MyString
+  password_digest: MyString
+  email: MyString
+  score: 1
+  balance: 9.99
+
+two:
+  username: MyString
+  password_digest: MyString
+  email: MyString
+  score: 1
+  balance: 9.99

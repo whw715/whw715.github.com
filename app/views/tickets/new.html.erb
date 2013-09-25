@@ -1,0 +1,42 @@
+<h1>添加场次</h1>
+
+
+<%= form_for(@ticket) do |f| %>
+	<% if @ticket.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+		<ul>
+			<% @ticket.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	
+
+  <div class="field">
+    <%= f.label :film_id, '选择电影' %><br />
+    <select id="ticket_film_id" name="ticket[film_id]" > 
+      <% @films.each do |film| %>
+      <option value= <%= film.id %> ><%= film.title %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :time, '放映时间' %><br />
+    <%= f.datetime_select :time %>
+  </div>
+  <div class="field">
+    <%= f.label :room, '放映厅' %><br />
+    <%= f.number_field :room %>
+  </div>
+ <div class="field">
+    <%= f.label :price, '价钱' %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit '确认添加' %>
+  </div>
+<% end %>
+<%= link_to '返回', tickets_path %>

@@ -1,0 +1,36 @@
+<%= form_for(@account) do |f| %>
+<fieldset>
+	<% if @account.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= @account.errors.count %>个错误被发现，请重新填写</h2>
+
+		<ul>
+			<% @account.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<legend><h2>新用户注册</h2></legend>
+
+	<div class="field">
+		<%= f.label :username, '用户名' %>
+		<%= f.text_field :username %>
+	</div>
+	<div class="field">
+		<%= f.label :email, '电子邮箱' %>
+		<%= f.text_field :email %>
+	</div>
+	<div class="field">
+		<%= f.label :password, '密码' %>
+		<%= f.password_field :password %>
+	</div>
+	<div class="field">
+		<%= f.label :password_confirmation, '确认' %>
+		<%= f.password_field :password_confirmation %>
+	</div>
+	<div class="actions">
+		<%= f.submit '确认注册'%>
+	</div>
+</fieldset>
+<% end %>

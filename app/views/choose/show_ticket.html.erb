@@ -1,0 +1,36 @@
+<style type="text/css">
+
+body {
+	text-align:center; 
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+</style>
+
+
+<h1>为电影选择场次</h1>
+<h2><<<%= @film.title %>>></h2>
+
+<table class="table table-bordered">
+  <tr>
+    <th>播放时间</th>
+    <th>播放厅</th>
+    <th>价钱</th>
+    <th></th>
+  </tr>
+  <% @ticket_groups.each do |t,ticket_group| %>
+    <% tkt = ticket_group.first %>
+    <tr>
+      <td><%= tkt.time %></td>
+      <td><%= tkt.room %></td>
+      <td><%= tkt.price %></td>
+      <td><%= link_to '我要购票', 
+        show_seat_url(:begin=>tkt.id,:end=>ticket_group.last.id)%></td>
+    </tr>
+  <% end %>
+</table>
+

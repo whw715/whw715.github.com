@@ -1,0 +1,23 @@
+<h1>现有场次</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>电影</th>
+    <th>播放时间</th>
+    <th>播放厅</th>
+    <th>价钱</th>
+  </tr>
+  <% @ticket_groups.each do |t,ticket_group| %>
+    <% tkt = ticket_group.first %>
+    <tr>
+      <td><%= tkt.film.title %></td>
+      <td><%= tkt.time %></td>
+      <td><%= tkt.room %></td>
+      <td><%= tkt.price %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to '添加场次', new_ticket_path %>

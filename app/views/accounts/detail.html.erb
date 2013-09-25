@@ -1,0 +1,52 @@
+<h1>我的账户</h1>
+	<% if flash[:alert] %>
+	<p id="notice"><%= flash[:alert] %></p> 
+	<% end %>
+
+<table class="table table-striped">
+	<tr>
+		<td>用户名</td>
+		<td>积分</td>
+		<td>余额</td>
+	</tr>
+	<tr>
+		<td><%= @account.username %></td>
+		<td><%= @account.score %></td>
+		<td><%= @account.balance %></td>
+	</tr>
+</table>
+<h1>订单记录</h1>
+<table class='table'>
+<tr>
+  <th>
+    电影名称
+  </th>
+  <th>
+    放映时间
+  </th>
+  <th>
+   票数 
+  </th>
+  <th>
+   票价 
+  </th>
+</tr>
+<% @account.orders.each do |order| %>
+<tr>
+  <td>
+    <%= order.order_lines.first.ticket.film.title %>
+  </td>
+  <td>
+    <%= order.order_lines.first.ticket.time %>
+  </td>
+  <td>
+    <%= order.order_lines.size %>
+  </td>
+  <td>
+    <%= order.price %>
+  </td>
+</tr>
+<% end %>
+
+</table>
+

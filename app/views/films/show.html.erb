@@ -1,0 +1,45 @@
+<style type="text/css" media="screen">
+b {
+  font-size: 1.5em;
+}
+  
+</style>
+<h1>详细信息</h1><br/>
+<p>
+  <b>影片名称</b>
+  <%= @film.title %>
+</p>
+
+<p>
+  <b>导演</b>
+  <%= @film.director %>
+</p>
+<p>
+  <b>演员</b>
+  <% @film.actors.each do |actor| %>
+  <%= actor.name %>
+  <% end %>
+</p>
+
+<p>
+  <b>地区</b>
+  <%= @film.country %>
+</p>
+
+<p>
+  <b>片长</b>
+  <%= @film.length %>
+  分钟
+</p>
+
+<p>
+  <b>上映日期</b>
+  <%= @film.time %>
+</p>
+
+<p>
+  <b>影片描述</b>
+  <%= @film.description %>
+</p>
+
+

@@ -1,0 +1,65 @@
+<style>
+.span6 img {
+	float: left;
+}
+.row {
+	margin-bottom: 2em;
+}
+.dir {
+	margin-left: 16em;
+}
+.dir h4, .dir p {
+	display: inline;	
+}
+.btn {
+	float: bottom;
+}
+</style>
+<% cnt = 0 %>
+<div class="row"> 
+<% @films.each do |film| %>
+	<% if cnt % 2 == 0 %>
+	<div class="row">
+	<% end %>
+
+    <div class= "span6" >
+    	<table class="table table-bordered">
+        <tr><td>
+        	<%= image_tag '/images/'+film.title+'.jpeg' %>
+        	<div class="dir">
+        		<h3><%= film.title %></h3>
+        	</div>
+        	<div class="dir">
+        		<h4>导演：</h4>
+        		<p><%= film.director %></p>
+        	</div>
+        	<div class="dir">
+        		<h4>地区：</h4>
+        		<p><%= film.country %></p>
+        	</div>
+        	<div class="dir">
+        		<h4>片长：</h4>
+        		<p><%= film.length %>分钟</p>
+        	</div>
+        	<div class="dir">
+        		<h4>上映时间：</h4>
+        		<p><%= film.time %></p>
+        	</div>
+        	<div class="dir">
+        		<h4>剧情简介：</h4>
+        		<p><%= film.description.slice(0,90)+'......' %></p>
+        	</div>
+          <div class="dir">
+            <%= link_to '详细信息', film, :class=>"btn"%>
+
+        	</div>
+        </td></tr>
+    	</table>
+    </div>
+
+    <% if cnt % 2 == 1 %>
+	</div>
+	<% end %>
+	<% cnt += 1 %>
+<% end %>
+</div>

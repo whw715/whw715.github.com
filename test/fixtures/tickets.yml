@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  film_id: 1
+  time: 2012-11-01 19:15:27
+  room: 1
+  colume: 1
+  row: 1
+  price: 
+
+two:
+  film_id: 1
+  time: 2012-11-01 19:15:27
+  room: 1
+  colume: 1
+  row: 1
+  price: 

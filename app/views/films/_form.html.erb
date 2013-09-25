@@ -1,0 +1,45 @@
+<%= form_for(@film) do |f| %>
+  <% if @film.errors.any? %>
+    <div id="error_explanation">
+      <h2><%=@film.errors.count %>个错误被发现，请重新填写！ </h2>
+
+      <ul>
+      <% @film.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, '电影标题' %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :director, '导演' %><br />
+    <%= f.text_field :director %>
+  </div>
+  <div class="field">
+    <%= label_tag :actors, '演员' %><br />
+    <%= text_field_tag :actors %>
+  </div>
+  <div class="field">
+    <%= f.label :country, '地区' %><br />
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :length, '片长' %><br />
+    <%= f.number_field :length %>
+  </div>
+  <div class="field">
+    <%= f.label :time, '上映日期' %><br />
+    <%= f.date_select :time %>
+  </div>
+  <div class="field">
+    <%= f.label :description, '影片描述' %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

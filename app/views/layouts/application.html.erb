@@ -1,0 +1,66 @@
+<head>
+  <title>电影院在线售票系统</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <div class="brand">在线售票</div>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><%= link_to '主页', index_url %></li>
+            <li><%= link_to '火热上映', show_now_url %></li>
+            <li><%= link_to '即将上映', show_after_url %></li>
+            <li><%= link_to '关于我们', about_url %></li>
+          </ul>
+
+          <form class="navbar-form pull-right">
+
+            <% if session[:account_id] != nil %>
+            当前用户：
+            <%= session[:account_username] %>
+
+            <%= link_to '我的账户', detail_url, :class=>"btn" %>
+            <%= link_to '退出登录', logout_url, :class=>"btn", :method => :delete %>
+            <% elsif session[:admin_id] != nil %>
+            <%= link_to '管理',admin_url, :class=>"btn" %>
+            <%= link_to '退出登录', logout_url, :method=>"delete",:class=>"btn", :method => :delete %>
+            <% else %>
+            <%= link_to '用户登录', login_url, :class=>'btn' %>
+            <%= link_to '注册', newuser_url, :class=>'btn' %>
+            <%= link_to '管理员登录', admin_login_url, :class=>'btn' %>
+            <% end %>
+          </form>
+
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+  <% if flash[:notice] %>
+  <h1 id="notice"><%= flash[:notice] %></h1> 
+  <% end %>
+    <%= yield %>
+  </div>
+
+</body>
+</html>

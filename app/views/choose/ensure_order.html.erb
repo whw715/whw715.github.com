@@ -1,0 +1,43 @@
+<h1>购票成功</h1>
+<%= @tt %>
+<table class='table'>
+<tr>
+  <th>
+    电影名称
+  </th>
+  <th>
+    放映时间
+  </th>
+  <th>
+    座位
+  </th>
+  <th>
+    票价
+  </th>
+</tr>
+<tr>
+<% @order.order_lines.each do |line| %>
+<tr>
+  <td>
+    <%=line.ticket.film.title%>
+  </td>
+  <td>
+    <%=line.ticket.time%>
+  </td>
+  <td>
+    第<%=line.ticket.row%>行第<%=line.ticket.colume%>列
+  </td>
+  <td>
+    <%=line.ticket.price%>元
+  </td>
+</tr>
+<% end %>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>
+    根据您的积分，优惠后总价：<%=@order.price%>元
+  </td>
+</table>
+

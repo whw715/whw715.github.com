@@ -1,0 +1,56 @@
+<h1>营业统计</h1><br/>
+
+<table class="table table-striped">
+  <tr>
+    <th>最近30天内业额</th>
+    <th>最近90天内营业额</th>
+    <th>最近365天营业额</th>
+  </tr>
+  <tr>
+    <td>
+      <%= Order.find(:all,
+      :conditions=>["time >= ? and time <= ?",
+      Time.now - 30.day,Time.now]).sum{|order| order.price} %>
+    </td>
+    <td>
+      <%= Order.find(:all,
+      :conditions=>["time >= ? and time <= ?",
+      Time.now - 90.day,Time.now]).sum{|order| order.price} %>
+    </td>
+    <td>
+      <%= Order.find(:all,
+      :conditions=>["time >= ? and time <= ?",
+      Time.now - 365.day,Time.now]).sum{|order| order.price} %>
+    </td>
+  </tr>
+</table>
+<h1>各电影营业统计</h1><br/>
+<table class="table table-striped">
+  <tr>
+    <th>电影名称</th>
+    <th>售出票数</th>
+    <th>营业额</th>
+  </tr>
+  <% Film.all.each do |film| %>
+  <tr>
+    <td>
+      <%= film.title %>
+    </td>
+    <td>
+      <%= film.tickets.find(:all,
+      :conditions=>"Onsale='f'").size %>
+    </td>
+    <td>
+      <%= film.tickets.find(:all,
+      :conditions=>"Onsale='f'").sum{|t| t.price} %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
+
+
+<h1>管理</h1><br/>
+<%= link_to '电影管理', films_url, :class=>"btn" %>
+<%= link_to '场次管理', tickets_url, :class=>"btn" %>
+<%= link_to '更改管理员密码', edit_administrator_path(session[:admin_id]), :class=>"btn" %>

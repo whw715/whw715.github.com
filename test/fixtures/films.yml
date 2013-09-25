@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  director: MyString
+  category: MyString
+  country: MyString
+  length: 1
+  time: 2012-11-01
+  description: MyText
+
+two:
+  title: MyString
+  director: MyString
+  category: MyString
+  country: MyString
+  length: 1
+  time: 2012-11-01
+  description: MyText

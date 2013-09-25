@@ -1,0 +1,79 @@
+<h1>为电影选择座位</h1>
+
+<style type="text/css" media="screen">
+  .box {
+    display:none;
+  }
+  body {
+    text-align:center; 
+  }
+
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+</style>
+
+<script type="text/javascript" charset="utf-8">
+  function change(obj){
+    if(obj.src.indexOf('pink.gif') != -1)
+      obj.src = obj.src.replace('pink.gif','green.gif');
+    else if(obj.src.indexOf('green.gif') != -1)
+      obj.src = obj.src.replace('green.gif','pink.gif');
+  }
+
+</script>
+
+<% if flash[:alert] %>
+<p id="notice"><%= flash[:alert] %></p> 
+<% end %>
+
+<%= form_tag ensure_order_url do %>
+<table class='table'>
+
+  <tr>
+    <td></td>
+    <% for j in 1..10 do %>
+      <td>
+        第<%=j%>列
+      </td>
+    <% end %>
+  </tr>
+  <% for i in 1..10 do %>
+    <tr>
+      <td>
+        第<%=i%>行
+      </td>
+      <% for j in 1..10 do %>
+        <td>
+          <% if @position[i][j] == true %>
+          <label>
+            <img src = "/images/green.gif" onclick="change(this)">
+            <input type='checkbox' class = 'box' value = <%=@ticketids[i][j]%> name = 'ids[]'>
+          </label>
+          <% else %>
+          <img src = "/images/red.gif">
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+      <%= submit_tag "确认购票", :class=>'btn' %>
+    </td>
+
+  </tr>
+</table>
+<% end %>
